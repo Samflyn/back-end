@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package common;
+
+option java_multiple_files = true;
+option java_package = "com.example.grpcdemo.model";
+
+enum UserType {
+  DEV = 0; // if value is not set anything that is set to 0 will be default value
+  QA = 1;
+  DEV_OPS = 2;
+}

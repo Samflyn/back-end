@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpcdemo.model";
+
+import "common/userType.proto";
+
+// user model
+
+message User {
+  string firstName = 1;
+  string lastName = 2;
+  int64 phone = 3;
+//  repeated Address address = 4; // list
+//  common.UserType user_type = 5; // for types in different proto files
+}
+
+// there is no null in protobuf, if we try to fetch Address.city it will give blank but not blank, can verify using hasAddress
+
+// Default values
+// int -> 0
+// string -> ""
+// enum -> value with 0
+// repeated -> empty list
+// map -> empty map
+// the has method will only be generated for nested objects
+message Address {
+  string streetName = 1;
+  string city = 2;
+  string country = 3;
+}
+
+message Treat {
+  map<int64, string> name = 1; // map
+}
+
+//Tags
+// 1 is also called tags, and can be with any number
+//while serializing proto will send 123="sam" 543="Atlanta"
+// Below is valid but it's best to use lower numbers
+// Use 1-15 for frequently used fields as it only uses 1 byte
+// Use 16-2047 for others as they take 2 bytes
+// 19000-19999 are reserved tags for protobuf implementation
+message SomeText {
+  string name = 123;
+  string city = 543;
+
+
+  //  we can reserve tags and field so they wont be used in future
+  reserved 2;
+  reserved "year", "model";
+}

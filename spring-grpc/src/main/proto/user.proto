@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.springgrpc.user";
+
+message CreateUserRequest {
+  string firstName = 1;
+  string lastName = 2;
+  int64 phone = 3;
+}
+
+message CreateUserResponse {
+  int64 id = 1;
+}
+
+message UserModel {
+  int64 id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  int64 phone = 4;
+}
+
+message UserListRequest {
+}
+
+message UserListResponse {
+  repeated UserModel userList = 1;
+}
+
+service UserService {
+  rpc getUserList(UserListRequest) returns (UserListResponse);
+  rpc createUser(CreateUserRequest) returns (CreateUserResponse);
+}
