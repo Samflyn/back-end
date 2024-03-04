@@ -1,0 +1,69 @@
+https://www.youtube.com/watch?v=QfnZGam76kE&list=PLyHJZXNdCXscoyL5XEZoHHZ86_6h3GWE1&index=25
+
+https://www.youtube.com/watch?v=EeRFOVMf7rE&list=PLyHJZXNdCXscoyL5XEZoHHZ86_6h3GWE1&index=29
+
+polymorphism
+string pool, why we need it
+null pointer exception handling for an object
+array vs arraylist
+completablefuture, why we need it
+what is functional interface, and relation between lambda expression
+how rest controller handles requests
+spring profiles
+how spring security works
+circuit breaker design pattern
+object class and it's methods
+what's the significance of equals and hashCode
+what is immutable class and how to create it
+what is try with resources
+difference between map and flatMap
+difference between @Controller vs @RestController
+garbage collection concepts, list of garbage collection
+cognative complexities
+solid
+cap
+which database and why you would choose it
+resttemplate vs webclient
+workflow engine
+observer pattern in spring
+spring aware interfaces for beans
+concurrentskiplist, linkedhashmap,
+pair, triple, doublylinkedlist, circularlinkedlist
+
+oops: 
+    -> Encapsulation: Binding all fields as single entries
+    -> Inheritance: Reuse all properties in child
+    -> polymorphism: compile time -> overloading, runtime -> overriding
+    -> Abstraction: Hiding implimentation to end user
+
+maintaining history programatically:
+    -> triggers in db 
+    -> java code
+    -> async using kafka and audit service
+    -> temporal tables
+
+microservice design patterns:
+    -> API gateway
+    -> Database per service
+    -> circuit breaker
+    -> event-driven
+    -> saga pattern
+
+design patterns:
+    Creational:
+        -> factory
+        -> singleton
+        -> builder
+    
+    Structural:
+        -> facade
+        -> adaptor
+        -> decorator
+    
+    Behavioural:
+        -> strategy
+        -> observer
+    
+    JEE:
+        -> mvc
+
