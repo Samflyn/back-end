@@ -1,7 +1,3 @@
-https://www.youtube.com/watch?v=QfnZGam76kE&list=PLyHJZXNdCXscoyL5XEZoHHZ86_6h3GWE1&index=25
-
-https://www.youtube.com/watch?v=EeRFOVMf7rE&list=PLyHJZXNdCXscoyL5XEZoHHZ86_6h3GWE1&index=29
-
 polymorphism
 string pool, why we need it
 null pointer exception handling for an object
@@ -30,6 +26,13 @@ spring aware interfaces for beans
 concurrentskiplist, linkedhashmap,
 pair, triple, doublylinkedlist, circularlinkedlist
 
+SOLID:
+    -> Single responsibility principle
+    -> Open for Extension, Closed for Modification
+    -> Liskov Substitution -> if class A is a subtype of class B, we should be able to replace B with A
+    -> Interface Segregation
+    -> Dependency Inversion
+
 oops: 
     -> Encapsulation: Binding all fields as single entries
     -> Inheritance: Reuse all properties in child
@@ -43,7 +46,7 @@ maintaining history programatically:
     -> temporal tables
 
 microservice design patterns:
-    -> API gateway
+    -> API gateway, reverse proxy
     -> Database per service
     -> circuit breaker
     -> event-driven
@@ -54,16 +57,39 @@ design patterns:
         -> factory
         -> singleton
         -> builder
-    
+
     Structural:
-        -> facade
-        -> adaptor
-        -> decorator
-    
+        -> facade -> class which will help in routing the class calls
+        -> adaptor -> if classes have same features, but different interfaces,
+                        we can use an adapter to use the class with other class without modifying their source code
+        -> decorator -> add additional responsibilities dynamically to an object
+
     Behavioural:
-        -> strategy
-        -> observer
-    
+        -> strategy -> Define a family of algorithms, encapsulate each one, and make them interchangeable.
+                    Strategy lets the algorithm vary independently from clients that use it.
+        -> observer -> Defines a one-to-many dependency between objects so that when one object changes state,
+                    all its dependents are notified and updated automatically.
+
     JEE:
         -> mvc
+
+Richardson's maturity model for rest services
+
+
+
+mockito, junit
+spring global exception handler
+spring validation framework
+microservice design patterns
+functional and optional
+java streams
+sql
+
+design patterns
+solid
+
+select distinct department.department_name, salary, employee.name from employee
+join department
+on employee.dept_id::int = department.id
+where (dept_id, salary) in (select dept_id, MAX(salary) from employee group by dept_id);
 
