@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: flyway
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    generate-ddl: false
+    show-sql: true
+
+  datasource:
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/test_db}
+
+  flyway:
+    enabled: true
+    clean-disabled: true

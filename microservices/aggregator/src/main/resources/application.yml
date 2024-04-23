@@ -1,0 +1,14 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: aggregator
+
+  cloud:
+    config:
+      enabled: false
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

@@ -73,7 +73,59 @@ design patterns:
     JEE:
         -> mvc
 
+Garbage Collectors:
+    serial garbage Collectors:
+        -> performs gc in single thread, blocks app while gc is running
+    
+    concurrent mark sweep:
+        -> uses multiple threads for gc
+        -> deprecated in java 9 replaced with g1
+        -> works along the app to minimise world stop
+
+    G1 gc (Default):
+        -> multi threaded with large heap space
+        -> instead of old and young, it uses regions for old and young so it's flexible
+        -> partitions heap to multiple regions
+        -> runs gc on most dead spaces
+    
+    Epsilon:
+        -> handles memory allocations but not gc
+        -> used for ultra latency sensitive applications
+    
+    Shanandoah gc:
+        -> it can run gc while application is running but is cpu intensive
+    
+    Z gc:
+        -> low latency or use very large heap
+        -> let's application run while gc is run
+        -> very low pause times
+    
+    Generational ZGC:
+        -> low latency
+        -> logical partitioning of young and older generation
+        -> low pause times
+
+Multithreading
+
+Fixed -> Have fixed threads and assign them tasks, if there are no threads available in OS they will be queued
+Cached -> No fixed no of threads and no queue which will have the tasks instead it will be replaced by synchronous queue which will only hold one task, it will check for available threads in pool if not it will create a new thread and add it to the pool
+Scheduled -> Specifically for scheduling tasks after a delay or at fixed rate, it will store the tasks in delay queue
+SingleThreaded -> Similar to fixedThread but has only one thread
+VirtualThread -> create virtual thread
+
 Richardson's maturity model for rest services
+
+microservices:
+Flyway, liquibase
+config server, service registry, service discovery
+spring cloud contracts
+api gateway, communication between services
+Fault tolerance - API fallback, circuit breaker
+Log aggregation, distributed tracing
+versioning, security
+microservices security and okta
+distributed transaction management - saga pattern
+testing - bdd, tdd
 
 
 
@@ -88,8 +140,242 @@ sql
 design patterns
 solid
 
-select distinct department.department_name, salary, employee.name from employee
+select department.department_name, salary, employee.name from employee
 join department
-on employee.dept_id::int = department.id
+on employee.dept_id = department.id
 where (dept_id, salary) in (select dept_id, MAX(salary) from employee group by dept_id);
+
+https://medium.com/@erayaraz10/understanding-atomic-volatile-and-synchronized-variables-in-java-differences-and-use-cases-b12f519a4c4b
+
+
+spring beans
+lazy loading of spring beans
+highest salary per department
+journey path and how to solve without map
+spring jpa join tables
+referential integrity in jpa
+di vs ioc
+singleton vs prototype
+streams vs parallelstreams
+parallelstreams framework and what does it internally use
+concurrency vs parallelism
+if uploading hugh file will parallism help
+which method to use if we have large no of url parameters
+parameters vs headers
+how does @ControllerAdvice work
+hibernate vs jpa
+index in db
+what is rank
+what is representation state
+what is rest
+fail fast vs fail safe in iterator
+stream methods -> peek
+spring security
+named queries
+joins in spring data jpa
+transaction management and isolation levels
+spring bean lifecycle
+need for equals and hashCode
+data dog
+how to check which api is slow in prod with no logs
+jwt and oauth 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1) current project architecture and technologies
+2) Immutable class example 
+3) any work experience in nosql databases?
+4) Checked exception and unchecked exception handling in Spring boot
+5) restful webservices vs difference with soap based webservices, when to use restul service
+6) any AWS experience
+7) any Kafka usage in projects
+8) In Spring how to retry the service if failure happens, after 2 hours
+
+
+
+
+
+Programmes
+
+1) Given integer array, reverse it without creating another array.
+2) Given the following list of routes in jourey, findout the starting place.
+
+
+
+
+1.	More on Project Architecture
+2.	Why distributed DB is required
+3.	What is the driver to connect Cockroach DB
+4.	How do you achieve CDN? With cloud data base?
+5.	How many end users for your application?
+6.	How do you achieve performance testing? J Meter or Blaze Metor
+7.	What is the scope of your application? How many end users?
+8.	How your application gets scaled?
+9.	In how many clusters your application is deployed?
+10.	What is the threshold value to make application gets auto scaled? and how to make in K8's
+11.	What is load balancing, how did you achieve both client and server side?
+12.	How POD gets healed once its down?
+13.	How load balancer gets notified once new POD is available? Which mean based on CPU usage
+14.	What is the approach for handling the logs.
+15.	Maven cyclic dependency issue? How do you resolve?
+16.	What is REST?
+17.	What is meant by Representational State Transfer?
+18.	What is Parallel Stream? Advantages on the same
+19.	What is the algorithm does Parallel Stream use?
+20.	How do you handle exceptions in Spring Boot?
+21.	How do we alert the support team once exception is occurred?
+mirror image
+
+1.Quick Introduction
+ 2.Explain Project Architecture
+ 3.How do you handle a message broker failure situation in your application?
+ 4.Program: Number to Rupee conversion
+ Input = "12345";
+ Output = "Twelve Thousand Three Hundred Forty Five";
+
+
+1)Previous project techstack
+ 2)Messaging Frameworks usage in project - Kafka, Azure Service Bus
+ 3)Why JVM throws StackOverFlowError
+ 4)How ArrayList increments its capacity
+ 5)How to implement custom ArrayList
+ 6)How to implement delete operation in custom ArrayList
+ 7)How to handle concurrency on custom ArrayList operations
+ 8)List is having trip(one-way) tickets in random order as below, print them in sequence by finding the exact origin
+     Input: List<String> tripTickets = Arrays.asList("KOL-BOM", "BOM-DEL", "HYD-KOL");
+     Output: HYD-KOL, KOL-BOM, BOM-DEL
+ 9)Configuration to connect to MySQL db from application 
+ 10)REST meaning
+ 11)What is JAX-RPC
+
+
+quick introduction, your tech stacks, experience with Java, spring boot and microservices.
+project explanation
+    follow up questions on the use cases
+    follow ups on the project integration layer, how are you handling if 3rd party gets down. (He didn't want possible solution 
+                                                            but existing solution)
+questions on beans in spring, spring boot ?
+How would you lazy load the beans in spring, spring boot?
+write DB Query to find the employee name, salary, department name taking highest salary for each department?
+                    employee
+                    --------
+                    id
+                    name
+                    age
+                    salary
+                    department_id
+ 
+                    department
+                    -----------
+                    department_id
+                    dept_name
+ 
+Program on itinerary to find the entire journey path. ?
+     List<String> journeyList  = List.of("HYD-Chennai",
+                "Bom-Bangalore",
+                "Chennai-Bom",
+                "Bangalore-Kolkata");
+        o/p :     HYD-->Chennai,
+                Chennai-->Bom,
+                Bom-->Bangalore,
+                Bangalore-->Kolkata,
+How can you solve the above question without maps ?
+
+
+Brief Introduction about yourself
+
+Explain your previous project and what is the tech stack
+
+Questions on Project
+ - How you handle failure in case of executor thread failed to process submitted job
+  (How in your current project you are handling it)
+
+What is REST ?
+
+What is Representation State means ?
+How it's different from SOAP ? (followup question)
+- SOAP also does the same sends data in the form of XML.
+
+Coding Question :
+
+Given a string "{{()}(){}}"
+ - 1) We need to find if the order of paranthesis are valid or not
+ - 2) If valid we should remove the first nested subgroup from
+ the given string the output for the above one is "{(){}}"
+
+couple of examples :
+- Input  -> "{{()}(){}}"
+- Output -> 1) valid
+        2) After first sub group removal "{(){}}"
+
+- Input  -> "{{"
+- Output -> Invalid
+
+- Input  -> "{{}"
+- Output -> Invalid
+
+- Input  -> "{()(){}}"
+- Output -> 1) Valid
+        2) After first sub group removal "{(){}}"
+
+- Input  -> "{({})}"
+- Output -> 1) Valid
+        2) After first sub group removal "{}"
+
+
+
+Program on itinerary to find the entire journey path given the jorney list ? "HYD->CHN","LCK->BOM","BOM->HYD"
+follow up question -> if the complete journey is not given and few paths are missing, how do we get the journey path ->
+    Ex :  "HYD->CHN","LCK->BOM" - I mentioned its not possible in this case as the start point is ambiguous
+follow up question -> Find the iternary if its valid path, else show that paths are not valid 
+    Ex : "HYD->CHN","LCK->BOM","DEL->BOM"
+follow up question -> Is it possible to reduce the complexity (as I've used two loops and a stream)    
+ 
+System.out.println(null) - what is the output
+follow up question -> why is it giving ambiguous error
+ 
+What is dependency Injection 
+What is a container? How is it created and internal working on how are beans created in it ?
+ 
+Emp table - name, dept_id, salary
+Dept table - dept_id, dept_name
+Get all the dept_ids with the highest salary in each dept
+
+
+1. Introduction & Project experience.
+2. Details about various components of OAUTH. How the flow works from UI to Auth Server, then to Resource server? In depth understanding of OAUTH & OPEN-ID. (Took almost 30 minutes)
+3. Trips program to find whether a complete/incomplete trip.
+4. What is REST?
+5. Difference b/w Angular & React.
+6. React Hooks concept.
+7. Custom WebComponents framework & concepts.
+
 
