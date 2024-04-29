@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 0
 
 spring:
   application:
@@ -8,10 +8,6 @@ spring:
   cloud:
     config:
       enabled: false
-
-    openfeign:
-      micrometer:
-        enabled: true
 
 eureka:
   client:
@@ -24,6 +20,5 @@ logging:
 
 management:
   tracing:
-    enabled: false
     sampling:
       probability: 1.0
